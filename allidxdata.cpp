@@ -46,6 +46,10 @@ void display(){
     void headdata(){
         cout<<head->val;
     }
+
+     void  taildata(){
+        cout<<tail->val;
+    }
     void idxdata(int idx){
         if(idx<0 or idx>=s ){
             return;
@@ -63,9 +67,7 @@ void display(){
         }
 
     }
-    void  taildata(){
-        cout<<tail->val;
-    }
+   
 
 };
 
