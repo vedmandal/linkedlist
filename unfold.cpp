@@ -113,6 +113,8 @@ void unfold(){
 
 }
 
+    
+
 };
 int main(){
     linkedlist a;
@@ -122,8 +124,7 @@ int main(){
     a.addlast(4);
     a.addlast(5);
      a.addlast(6);
-   
-   a.fold();
+      a.fold();
    cout<<"after unfold"<<endl;
    a.unfold();
 }
