@@ -1,4 +1,6 @@
 #include<iostream>
+#include<vector>
+#include<stack>
 
 using namespace std;
 
@@ -42,33 +44,27 @@ void display(){
         curr=curr->next;
     }
 }
-int length( node*&head){
-    int l=0;
-     node*curr=head;
-     while(curr!=NULL){
-         curr=curr->next;
-         l++;
-     }
-     return l;
-}
-    node* removeNthFromEnd(node* head, int n) {
-        if(head->next==NULL){
-            return NULL;
-        }
-       
-        int size=length(head);
-        if(size==n){
-            return head->next;
-        }
+ vector<int> nextLargerNodes(node* head) {
+        vector<int> ans;
+    stack<int> stack;
 
-        node*curr=head;
-         for(int i=1;i<size-n;i++){
-             curr=curr->next;
-         }
-         curr->next=curr->next->next;
-         return head;
+    for (; head; head = head->next) {
+      while (!stack.empty() && head->val > ans[stack.top()]) {
+        int index = stack.top();
+        stack.pop();
+        ans[index] = head->val;
+      }
+      stack.push(ans.size());
+      ans.push_back(head->val);
+    }
+
+    for (; !stack.empty(); stack.pop())
+      ans[stack.top()] = 0;
+
+    return ans;
         
     }
+
 };
 int main(){
     linkedlist a;
